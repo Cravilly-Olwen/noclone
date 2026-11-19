@@ -2,7 +2,7 @@
 
 Noclone utilise **Supabase** (PostgreSQL).
 
-Les comptes eux-mêmes (courriel, sessions) sont gérés par **Supabase Auth**, dans la table `auth.users`. Nos tables ajoutent ce que Supabase ne gère pas : la fiche du client, ses passkeys et les défis WebAuthn.
+Les comptes eux-mêmes (courriel, sessions) sont gérés par **Supabase Auth**, dans la table `auth.users`. Nos tables ajoutent ce que Supabase ne gère pas : la fiche du client, ses passkeys, les défis WebAuthn, ainsi que ses comptes bancaires fictifs et leurs opérations.
 
 ## Tables
 
@@ -46,11 +46,42 @@ Les défis (challenges) en attente. Une fonction Edge ne garde rien en mémoire 
 | `donnees` | JSON | Informations liées, par exemple le prénom et le nom saisis à l'inscription |
 | `date_expiration` | date et heure | Au-delà, le défi est refusé |
 
+### `comptes`
+
+Les comptes bancaires fictifs d'un client. Chaque nouveau client reçoit automatiquement un compte chèques et un compte épargne.
+
+| Colonne | Type | Description |
+| --- | --- | --- |
+| `id` | uuid | Clé primaire |
+| `client_id` | uuid | Client propriétaire (référence `clients.id`) |
+| `type` | texte | `cheque` ou `epargne` |
+| `nom` | texte | Nom affiché, par exemple « Compte chèques » |
+| `date_creation` | date et heure | Date d'ouverture du compte |
+
+### `operations`
+
+L'historique de chaque compte. Le solde d'un compte est la somme de ses opérations.
+
+| Colonne | Type | Description |
+| --- | --- | --- |
+| `id` | entier | Clé primaire, générée automatiquement |
+| `compte_id` | uuid | Compte concerné (référence `comptes.id`) |
+| `libelle` | texte | Description, par exemple « Loyer » |
+| `montant_cents` | entier | Montant en cents : positif pour une entrée, négatif pour une sortie |
+| `categorie` | texte | Catégorie, par exemple « Logement » |
+| `date_operation` | date et heure | Date de l'opération |
+
+## Données de démonstration
+
+À la création d'une fiche `clients`, le déclencheur `donnees_demo` appelle la fonction `creer_donnees_demo()`, qui ouvre deux comptes et ajoute un mois d'opérations fictives (20 opérations, environ 2 445 $ sur le compte chèques et 5 068 $ sur l'épargne). Les dates sont relatives au jour de l'inscription, pour que l'historique paraisse toujours récent.
+
 ## Relations
 
 - Un compte `auth.users` a **au plus une** fiche `clients`.
 - Une fiche `clients` a **zéro ou plusieurs** `passkeys`.
-- Supprimer un compte supprime automatiquement sa fiche et ses passkeys (`on delete cascade`).
+- Une fiche `clients` a **deux** `comptes` (chèques et épargne).
+- Un compte a **zéro ou plusieurs** `operations`.
+- Supprimer un compte `auth.users` supprime automatiquement sa fiche, ses passkeys, ses comptes et ses opérations (`on delete cascade`).
 - `defis` n'est liée à aucune table : un défi ne vit que le temps d'une inscription ou d'une connexion.
 
 ## Sécurité (Row Level Security)
@@ -62,5 +93,7 @@ La clé *publishable* de Supabase est visible dans le JavaScript du site : n'imp
 | `clients` | Le client connecté, sa propre fiche uniquement | Interdite |
 | `passkeys` | Le client connecté, ses propres passkeys uniquement | Interdite |
 | `defis` | Interdite | Interdite |
+| `comptes` | Le client connecté, ses propres comptes uniquement | Interdite |
+| `operations` | Le client connecté, les opérations de ses comptes uniquement | Interdite |
 
-Toutes les écritures passent par la fonction Edge `passkeys`, qui utilise la clé secrète du projet après avoir vérifié la passkey.
+Toutes les écritures passent par la fonction Edge `passkeys`, qui utilise la clé secrète du projet après avoir vérifié la passkey, ou par la fonction `creer_donnees_demo()` pour les données de démonstration.
