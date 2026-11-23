@@ -28,3 +28,38 @@
   font-weight: 700;
   font-display: swap;
 }
+
+:root {
+  color-scheme: dark;
+
+  --nuit: #0f1014;
+  --surface: #181a20;
+  --trait: #2a2d35; 
+  --texte: #eef0f4;
+  --gris: #a3a7b0;
+
+  --cobalt: #8fb0ff;
+  --orange: #ff9a5c;
+  --emeraude: #5fe3ac;
+  --lavande: #cbb8ff;
+  --corail: #ff9a7e;
+  --ambre: #ffc163;
+  --cerise: #ff6d84;
+  --lagon: #6fe0e6;
+
+  --carte-cobalt: linear-gradient(140deg, #3a63f0, #1630a8 55%, #2a4fd6);
+  --carte-orange: linear-gradient(140deg, #ff7a33, #c94412 55%, #ef6420);
+  --carte-emeraude: linear-gradient(140deg, #17a06d, #0a5a3d 55%, #138a5e);
+  --carte-lavande: linear-gradient(140deg, #cdbcff, #8f78e0 55%, #b8a5ff);
+  --carte-cerise: linear-gradient(140deg, #ff4d6d, #a3112f 55%, #e0294b);
+  --carte-lagon: linear-gradient(140deg, #2fd3d9, #0b7c8f 55%, #22b3c0);
+
+  --police-texte: "Inter", Arial, sans-serif;
+  --police-code: "Space Mono", "Courier New", monospace;
+
+  --rayon: 10px;
+  --mesure-texte: 74ch;
+  --largeur-max: 1200px;
+  --marge-page: clamp(16px, 4vw, 40px);
+  --accent: var(--cobalt);
+}
