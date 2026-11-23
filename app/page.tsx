@@ -7,7 +7,7 @@ const fonds = ["nuit", "surface", "trait", "texte", "gris"];
 export default function Home() {
   return (
     <main className={styles.page}>
-      <h1>Aperçu de globals.css</h1>
+      <h1>Aperçu de globals.css, ceci est un test.</h1>
       <p>
         Copiez-nous. Vous n&apos;y arriverez pas. Ce paragraphe est limité à 74 caractères de large, avec un{" "}
         <a href="#liens">lien en cobalt</a> et du <code>code en Space Mono</code>. Redimensionnez la fenêtre pour
