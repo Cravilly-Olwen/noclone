@@ -30,7 +30,7 @@ export default function Home() {
     <main className={styles.page}>
       <h1>Aperçu de globals.css, ceci est un test.</h1>
       <p>
-        Copiez-nous. Vous n&apos;y arriverez pas. Ce paragraphe est limité à 74
+        Ce paragraphe est limité à 74
         caractères de large, avec un <a href="#liens">lien en cobalt</a> et du{" "}
         <code>code en Space Mono</code>. Redimensionnez la fenêtre pour voir les
         titres s&apos;ajuster.
