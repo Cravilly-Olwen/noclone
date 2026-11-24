@@ -8,7 +8,16 @@ import { Minuteur } from "@/components/ui/Minuteur";
 import { Modale } from "@/components/ui/Modale";
 import styles from "./page.module.css";
 
-const couleurs = ["cobalt", "orange", "emerald", "lavender", "coral", "amber", "cherry", "lagoon"];
+const couleurs = [
+  "cobalt",
+  "orange",
+  "emerald",
+  "lavender",
+  "coral",
+  "amber",
+  "cherry",
+  "lagoon",
+];
 const cartes = ["cobalt", "orange", "emerald", "lavender", "cherry", "lagoon"];
 const fonds = ["night", "surface", "border", "text", "muted"];
 
@@ -108,8 +117,21 @@ export default function Home() {
       <h2>Fonds et texte</h2>
       <ul className={styles.grille}>
         {fonds.map((c) => (
-          <li key={c} className={styles.pastille} style={{ background: `var(--${c})` }}>
-            <span style={{ color: c === "text" || c === "muted" ? "var(--night)" : "var(--text)" }}>--{c}</span>
+          <li
+            key={c}
+            className={styles.pastille}
+            style={{ background: `var(--${c})` }}
+          >
+            <span
+              style={{
+                color:
+                  c === "text" || c === "muted"
+                    ? "var(--night)"
+                    : "var(--text)",
+              }}
+            >
+              --{c}
+            </span>
           </li>
         ))}
       </ul>
@@ -130,7 +152,11 @@ export default function Home() {
       <h2>Cartes</h2>
       <ul className={styles.grille}>
         {cartes.map((c) => (
-          <li key={c} className={styles.carte} style={{ background: `var(--card-${c})` }}>
+          <li
+            key={c}
+            className={styles.carte}
+            style={{ background: `var(--card-${c})` }}
+          >
             <code>--card-{c}</code>
           </li>
         ))}
