@@ -1,8 +1,8 @@
 import styles from "./page.module.css";
 
-const couleurs = ["cobalt", "orange", "emeraude", "lavande", "corail", "ambre", "cerise", "lagon"];
-const cartes = ["cobalt", "orange", "emeraude", "lavande", "cerise", "lagon"];
-const fonds = ["nuit", "surface", "trait", "texte", "gris"];
+const couleurs = ["cobalt", "orange", "emerald", "lavender", "coral", "amber", "cherry", "lagoon"];
+const cartes = ["cobalt", "orange", "emerald", "lavender", "cherry", "lagoon"];
+const fonds = ["night", "surface", "border", "text", "muted"];
 
 export default function Home() {
   return (
@@ -22,7 +22,7 @@ export default function Home() {
       <ul className={styles.grille}>
         {fonds.map((c) => (
           <li key={c} className={styles.pastille} style={{ background: `var(--${c})` }}>
-            <span style={{ color: c === "texte" || c === "gris" ? "var(--nuit)" : "var(--texte)" }}>--{c}</span>
+            <span style={{ color: c === "text" || c === "muted" ? "var(--night)" : "var(--text)" }}>--{c}</span>
           </li>
         ))}
       </ul>
@@ -39,8 +39,8 @@ export default function Home() {
       <h2>Cartes</h2>
       <ul className={styles.grille}>
         {cartes.map((c) => (
-          <li key={c} className={styles.carte} style={{ background: `var(--carte-${c})` }}>
-            <code>--carte-{c}</code>
+          <li key={c} className={styles.carte} style={{ background: `var(--card-${c})` }}>
+            <code>--card-{c}</code>
           </li>
         ))}
       </ul>
