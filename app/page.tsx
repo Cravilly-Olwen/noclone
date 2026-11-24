@@ -30,8 +30,8 @@ export default function Home() {
     <main className={styles.page}>
       <h1>Aperçu de globals.css, ceci est un test.</h1>
       <p>
-        Ce paragraphe est limité à 74
-        caractères de large, avec un <a href="#liens">lien en cobalt</a> et du{" "}
+        Ce paragraphe est limité à 74 caractères de large, avec un{" "}
+        <a href="#liens">lien en cobalt</a> et du{" "}
         <code>code en Space Mono</code>. Redimensionnez la fenêtre pour voir les
         titres s&apos;ajuster.
       </p>
@@ -48,14 +48,15 @@ export default function Home() {
       <div className={styles.rangee}>
         <Champ
           label="Bénéficiaire"
-          placeholder="Nom ou courriel"
-          aide="Un nouveau bénéficiaire déclenche un délai de 24 h."
+          placeholder="Julie Tremblay"
+          inputMode="text"
+          aide="Lettres seulement. Un nouveau bénéficiaire déclenche un délai de 24 h."
         />
         <Champ
-          label="Montant" // affiche une erreur uniquement quand le paramètre error est fournis (si undefined est passé ça n'affiche pas d'erreurs)
-          type="number"
-          defaultValue="-5"
-          erreur="Le montant doit être positif."
+          label="Montant"
+          inputMode="decimal"
+          defaultValue="0"
+          erreur="Le montant doit être positif." // affiche une erreur uniquement quand le paramètre error est fournis (si undefined est passé ça n'affiche pas d'erreur)
         />
         <Champ label="Désactivé" disabled defaultValue="Non modifiable" />
       </div>
