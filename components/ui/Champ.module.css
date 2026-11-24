@@ -1,0 +1,40 @@
+.champ {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+.saisie {
+  min-height: 44px;
+  padding: 0 12px;
+  color: var(--texte);
+  background: var(--surface);
+  border: 1px solid var(--trait);
+  border-radius: var(--rayon);
+  transition: border-color 150ms ease;
+}
+.saisie::placeholder {
+  color: var(--gris);
+}
+.saisie:hover:not(:disabled) {
+  border-color: var(--gris);
+}
+.saisie:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.saisie[aria-invalid="true"] {
+  border-color: var(--cerise);
+}
+
+.aide,
+.erreur {
+  font-size: 0.8125rem;
+}
+.aide {
+  color: var(--gris);
+}
+.erreur {
+  color: var(--cerise);
+}
