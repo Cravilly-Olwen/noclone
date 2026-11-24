@@ -1,3 +1,4 @@
+import { Bouton } from "@/components/ui/Bouton";
 import styles from "./page.module.css";
 
 const couleurs = ["cobalt", "orange", "emeraude", "lavande", "corail", "ambre", "cerise", "lagon"];
@@ -13,6 +14,14 @@ export default function Home() {
         <a href="#liens">lien en cobalt</a> et du <code>code en Space Mono</code>. Redimensionnez la fenêtre pour
         voir les titres s&apos;ajuster.
       </p>
+
+      <h2>Boutons</h2>
+      <div className={styles.rangee}>
+        <Bouton>Primaire</Bouton>
+        <Bouton variante="secondaire">Secondaire</Bouton>
+        <Bouton variante="danger">Danger</Bouton>
+        <Bouton disabled>Désactivé</Bouton>
+      </div>
 
       <h2>Titres</h2>
       <h3>Un titre de niveau 3</h3>
