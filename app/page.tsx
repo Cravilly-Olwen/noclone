@@ -1,4 +1,5 @@
 import { Bouton } from "@/components/ui/Bouton";
+import { Badge } from "@/components/ui/Badge";
 import { Champ } from "@/components/ui/Champ";
 import styles from "./page.module.css";
 
@@ -42,12 +43,20 @@ export default function Home() {
           aide="Un nouveau bénéficiaire déclenche un délai de 24 h."
         />
         <Champ
-          label="Montant ($)"
+          label="Montant" // affiche une erreur uniquement quand le paramètre error est fournis (si undefined est passé ça n'affiche pas d'erreurs)
           type="number"
-          defaultValue="10"
+          defaultValue="-5"
           erreur="Le montant doit être positif."
         />
         <Champ label="Désactivé" disabled defaultValue="Non modifiable" />
+      </div>
+
+      <h2>Badges</h2>
+      <div className={styles.rangee}>
+        <Badge>En attente</Badge>
+        <Badge ton="succes">Envoyé</Badge>
+        <Badge ton="attention">Délai de sécurité</Badge>
+        <Badge ton="danger">Annulé</Badge>
       </div>
 
       <h2>Titres</h2>
