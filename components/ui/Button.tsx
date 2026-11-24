@@ -1,12 +1,12 @@
 import type { ButtonHTMLAttributes } from "react";
-import styles from "./Bouton.module.css";
+import styles from "./Button.module.css";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variante?: "primaire" | "secondaire" | "danger";
+  variant?: "primary" | "secondary" | "danger";
 };
 
-export function Bouton({
-  variante = "primaire",
+export function Button({
+  variant = "primary",
   className = "",
   type = "button",
   ...rest
@@ -14,7 +14,7 @@ export function Bouton({
   return (
     <button
       type={type}
-      className={`${styles.bouton} ${styles[variante]} ${className}`}
+      className={`${styles.button} ${styles[variant]} ${className}`}
       {...rest}
     />
   );

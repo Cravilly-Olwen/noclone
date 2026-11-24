@@ -7,15 +7,15 @@
   font-weight: 600;
   line-height: 1.4;
   white-space: nowrap;
-  color: var(--gris);
+  color: var(--muted);
 }
 
-.succes {
-  color: var(--emeraude);
+.success {
+  color: var(--emerald);
 }
-.attention {
-  color: var(--ambre);
+.warning {
+  color: var(--amber);
 }
 .danger {
-  color: var(--cerise);
+  color: var(--cherry);
 }

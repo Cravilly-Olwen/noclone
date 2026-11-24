@@ -1,46 +1,46 @@
-.modale {
+.modal {
   width: 100%;
   max-width: min(32rem, calc(100vw - 32px));
   margin: auto;
   padding: 24px;
-  color: var(--texte);
+  color: var(--text);
   background: var(--surface);
-  border: 1px solid var(--trait);
+  border: 1px solid var(--border);
   border-radius: 16px;
 }
-.modale[open] {
-  animation: entree 200ms ease-out;
+.modal[open] {
+  animation: enter 200ms ease-out;
 }
-.modale::backdrop {
+.modal::backdrop {
   background: rgb(0 0 0 / 0.65);
 }
 
-.tete {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: start;
   gap: 16px;
   margin-bottom: 16px;
 }
-.tete h2 {
+.header h2 {
   font-size: 1.25rem;
 }
 
-.fermer {
+.close {
   padding: 4px 8px;
   border: 0;
   border-radius: 6px;
   font-size: 1.5rem;
   line-height: 1;
-  color: var(--gris);
+  color: var(--muted);
   background: none;
   cursor: pointer;
 }
-.fermer:hover {
-  color: var(--texte);
+.close:hover {
+  color: var(--text);
 }
 
-@keyframes entree {
+@keyframes enter {
   from {
     opacity: 0;
     transform: translateY(8px);

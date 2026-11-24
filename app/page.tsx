@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Bouton } from "@/components/ui/Bouton";
+import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { Champ } from "@/components/ui/Champ";
-import { Minuteur } from "@/components/ui/Minuteur";
-import { Modale } from "@/components/ui/Modale";
+import { Field } from "@/components/ui/Field";
+import { Timer } from "@/components/ui/Timer";
+import { Modal } from "@/components/ui/Modal";
 import styles from "./page.module.css";
 
 const couleurs = [
@@ -38,73 +38,73 @@ export default function Home() {
 
       <h2>Boutons</h2>
       <div className={styles.rangee}>
-        <Bouton>Primaire</Bouton>
-        <Bouton variante="secondaire">Secondaire</Bouton>
-        <Bouton variante="danger">Danger</Bouton>
-        <Bouton disabled>Désactivé</Bouton>
+        <Button>Primaire</Button>
+        <Button variant="secondary">Secondaire</Button>
+        <Button variant="danger">Danger</Button>
+        <Button disabled>Désactivé</Button>
       </div>
 
       <h2>Champs</h2>
       <div className={styles.rangee}>
-        <Champ
-          label="Bénéficiaire"
-          placeholder="Julie Tremblay"
+        <Field
+          label="Un champ de texte"
+          placeholder="Jean Jean"
           inputMode="text"
-          aide="Lettres seulement. Un nouveau bénéficiaire déclenche un délai de 24 h."
+          hint="Voici une aide au cas où vous ne savez pas lire. Booo"
         />
-        <Champ
-          label="Montant"
+        <Field
+          label="Un autre champ de texte"
           inputMode="decimal"
           defaultValue="0"
-          erreur="Le montant doit être positif." // affiche une erreur uniquement quand le paramètre error est fournis (si undefined est passé ça n'affiche pas d'erreur)
+          error="Ceci est une erreur" // affiche une erreur uniquement quand le paramètre error est fourni (si undefined est passé ça n'affiche pas d'erreur)
         />
-        <Champ label="Désactivé" disabled defaultValue="Non modifiable" />
+        <Field label="Désactivé" disabled defaultValue="Non modifiable" />
       </div>
 
       <h2>Badges</h2>
       <div className={styles.rangee}>
         <Badge>En attente</Badge>
-        <Badge ton="succes">Envoyé</Badge>
-        <Badge ton="attention">Délai de sécurité</Badge>
-        <Badge ton="danger">Annulé</Badge>
+        <Badge tone="success">Envoyé</Badge>
+        <Badge tone="warning">Délai de sécurité</Badge>
+        <Badge tone="danger">Annulé</Badge>
       </div>
 
       <h2>Modale</h2>
       <div>
-        <Bouton onClick={() => setOuverte(true)}>Ouvrir la modale</Bouton>
-        <Modale
-          ouverte={ouverte}
-          onFermer={() => setOuverte(false)}
-          titre="Titre du modal"
+        <Button onClick={() => setOuverte(true)}>Ouvrir la modale</Button>
+        <Modal
+          open={ouverte}
+          onClose={() => setOuverte(false)}
+          title="Titre du modal"
         >
           <p>Voulez vous vraiment annuler ?</p>
           <div className={styles.rangee} style={{ marginTop: 24 }}>
-            <Bouton variante="danger" onClick={() => setOuverte(false)}>
+            <Button variant="danger" onClick={() => setOuverte(false)}>
               Oui, annuler
-            </Bouton>
-            <Bouton variante="secondaire" onClick={() => setOuverte(false)}>
+            </Button>
+            <Button variant="secondary" onClick={() => setOuverte(false)}>
               Non
-            </Bouton>
+            </Button>
           </div>
-        </Modale>
+        </Modal>
       </div>
 
       <h2>Minuteur</h2>
       <div className={styles.rangee} style={{ alignItems: "center" }}>
-        <Bouton
-          variante="secondaire"
+        <Button
+          variant="secondary"
           onClick={() => {
             setFin(Date.now() + 5000);
             setTermine(false);
           }}
         >
           Démarrer (5 s)
-        </Bouton>
+        </Button>
         {fin !== null && (
           <>
             <span>
               {termine ? "Minuteur termine :" : "Minuteur en cours... :"}{" "}
-              <Minuteur fin={fin} onFin={() => setTermine(true)} />
+              <Timer end={fin} onEnd={() => setTermine(true)} />
             </span>
           </>
         )}

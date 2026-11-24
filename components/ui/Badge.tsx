@@ -2,12 +2,12 @@ import type { ReactNode } from "react";
 import styles from "./Badge.module.css";
 
 type Props = {
-  ton?: "neutre" | "succes" | "attention" | "danger";
+  tone?: "neutral" | "success" | "warning" | "danger";
   children: ReactNode;
 };
 
-export function Badge({ ton = "neutre", children }: Props) {
+export function Badge({ tone = "neutral", children }: Props) {
   return (
-    <span className={`${styles.badge} ${styles[ton] ?? ""}`}>{children}</span>
+    <span className={`${styles.badge} ${styles[tone] ?? ""}`}>{children}</span>
   );
 }
