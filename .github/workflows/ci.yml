@@ -24,6 +24,9 @@ jobs:
       - name: Lint (ESLint)
         run: npm run lint
 
+      - name: Generate route types (Next.js)
+        run: npx next typegen
+
       - name: Types (TypeScript)
         run: npx tsc --noEmit
 
