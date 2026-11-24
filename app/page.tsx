@@ -1,6 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import { Bouton } from "@/components/ui/Bouton";
 import { Badge } from "@/components/ui/Badge";
 import { Champ } from "@/components/ui/Champ";
+import { Modale } from "@/components/ui/Modale";
 import styles from "./page.module.css";
 
 const couleurs = [
@@ -17,6 +21,8 @@ const cartes = ["cobalt", "orange", "emeraude", "lavande", "cerise", "lagon"];
 const fonds = ["nuit", "surface", "trait", "texte", "gris"];
 
 export default function Home() {
+  const [ouverte, setOuverte] = useState(false);
+
   return (
     <main className={styles.page}>
       <h1>Aperçu de globals.css, ceci est un test.</h1>
@@ -57,6 +63,26 @@ export default function Home() {
         <Badge ton="succes">Envoyé</Badge>
         <Badge ton="attention">Délai de sécurité</Badge>
         <Badge ton="danger">Annulé</Badge>
+      </div>
+
+      <h2>Modale</h2>
+      <div>
+        <Bouton onClick={() => setOuverte(true)}>Ouvrir la modale</Bouton>
+        <Modale
+          ouverte={ouverte}
+          onFermer={() => setOuverte(false)}
+          titre="Titre du modal"
+        >
+          <p>Le virement de 250 $ à Julie Tremblay n&apos;aura pas lieu.</p>
+          <div className={styles.rangee} style={{ marginTop: 24 }}>
+            <Bouton variante="danger" onClick={() => setOuverte(false)}>
+              Oui, annuler
+            </Bouton>
+            <Bouton variante="secondaire" onClick={() => setOuverte(false)}>
+              Non
+            </Bouton>
+          </div>
+        </Modale>
       </div>
 
       <h2>Titres</h2>
