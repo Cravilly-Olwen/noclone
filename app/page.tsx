@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Bouton } from "@/components/ui/Bouton";
 import { Badge } from "@/components/ui/Badge";
 import { Champ } from "@/components/ui/Champ";
+import { Minuteur } from "@/components/ui/Minuteur";
 import { Modale } from "@/components/ui/Modale";
 import styles from "./page.module.css";
 
@@ -22,6 +23,8 @@ const fonds = ["nuit", "surface", "trait", "texte", "gris"];
 
 export default function Home() {
   const [ouverte, setOuverte] = useState(false);
+  const [fin, setFin] = useState<number | null>(null);
+  const [termine, setTermine] = useState(false);
 
   return (
     <main className={styles.page}>
@@ -73,7 +76,7 @@ export default function Home() {
           onFermer={() => setOuverte(false)}
           titre="Titre du modal"
         >
-          <p>Le virement de 250 $ à Julie Tremblay n&apos;aura pas lieu.</p>
+          <p>Voulez vous vraiment annuler ?</p>
           <div className={styles.rangee} style={{ marginTop: 24 }}>
             <Bouton variante="danger" onClick={() => setOuverte(false)}>
               Oui, annuler
@@ -83,6 +86,27 @@ export default function Home() {
             </Bouton>
           </div>
         </Modale>
+      </div>
+
+      <h2>Minuteur</h2>
+      <div className={styles.rangee} style={{ alignItems: "center" }}>
+        <Bouton
+          variante="secondaire"
+          onClick={() => {
+            setFin(Date.now() + 5000);
+            setTermine(false);
+          }}
+        >
+          Démarrer (5 s)
+        </Bouton>
+        {fin !== null && (
+          <>
+            <span>
+              {termine ? "Minuteur termine :" : "Minuteur en cours... :"}{" "}
+              <Minuteur fin={fin} onFin={() => setTermine(true)} />
+            </span>
+          </>
+        )}
       </div>
 
       <h2>Titres</h2>
