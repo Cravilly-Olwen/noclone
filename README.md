@@ -17,7 +17,7 @@ Projet libre du cours **8WEB101 Conception et programmation de sites Web**, Univ
 3. Coffre à retardement pour l’épargne.
 4. Code de détresse permettant d’ouvrir un compte factice.
 5. **Le Check** : deux amis se vérifient une fois en personne, en scannant mutuellement leur code Noclone. Ensuite, toute demande d’argent envoyée sur Instagram ou Snapchat sera signée par le téléphone de son auteur : un compte piraté ne pourra plus rien exiger.
-6. Démonstrateur de billet quantique :  détection d’une contrefaçon.
+6. Démonstrateur de billet quantique : détection d’une contrefaçon.
 
 **Bonus, si le temps le permet**
 
@@ -34,12 +34,12 @@ Projet libre du cours **8WEB101 Conception et programmation de sites Web**, Univ
 
 ## Équipe
 
-| Membre | GitHub | Rôle |
-| --- | --- | --- |
-| Gabriel Lessard| [@gabless11](https://github.com/gabless11) | Coordination et documentation |
-| Adam Benahmed | [@Benahmed-AdamBenahmed](https://github.com/Benahmed-AdamBenahmed) | Référent technique |
-| Olwen Cravilly-Mitaine | [@Cravilly-Olwen](https://github.com/Cravilly-Olwen) | Conception et expérience utilisateur |
-| Jeremy Girard | [@Jerem-ctrl](https://github.com/Jerem-ctrl) | Intégration et qualité |
+| Membre                 | GitHub                                                             | Rôle                                 |
+| ---------------------- | ------------------------------------------------------------------ | ------------------------------------ |
+| Gabriel Lessard        | [@gabless11](https://github.com/gabless11)                         | Coordination et documentation        |
+| Adam Benahmed          | [@Benahmed-AdamBenahmed](https://github.com/Benahmed-AdamBenahmed) | Référent technique                   |
+| Olwen Cravilly-Mitaine | [@Cravilly-Olwen](https://github.com/Cravilly-Olwen)               | Conception et expérience utilisateur |
+| Jeremy Girard          | [@Jerem-ctrl](https://github.com/Jerem-ctrl)                       | Intégration et qualité               |
 
 ## Technologies
 

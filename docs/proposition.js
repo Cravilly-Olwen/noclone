@@ -10,10 +10,9 @@
  *    la phrase « Répartition » : impossible d'oublier de la corriger.
  */
 
-const CHAMP = /\[[^\]]+\]/;           // un texte entre crochets
-const DECOUPE = /(\[[^\]]+\])/;       // même motif, conservé lors du découpage
+const CHAMP = /\[[^\]]+\]/; // un texte entre crochets
+const DECOUPE = /(\[[^\]]+\])/; // même motif, conservé lors du découpage
 const A_IGNORER = ["CODE", "PRE", "SCRIPT", "STYLE"];
-
 
 /* 1. Typographie française ---------------------------------------------------- */
 
@@ -21,7 +20,10 @@ const A_IGNORER = ["CODE", "PRE", "SCRIPT", "STYLE"];
 // : ; ! ? » ou après « devient insécable, pour ne jamais commencer une ligne.
 function corrigerTypographie(element) {
   for (const noeud of element.childNodes) {
-    if (noeud.nodeType === Node.ELEMENT_NODE && !A_IGNORER.includes(noeud.tagName)) {
+    if (
+      noeud.nodeType === Node.ELEMENT_NODE &&
+      !A_IGNORER.includes(noeud.tagName)
+    ) {
       corrigerTypographie(noeud);
     } else if (noeud.nodeType === Node.TEXT_NODE) {
       const corrige = noeud.textContent
@@ -37,7 +39,6 @@ function corrigerTypographie(element) {
 
 corrigerTypographie(document.body);
 
-
 /* 2. Champs à compléter ------------------------------------------------------ */
 
 // Parcourt récursivement un élément et entoure chaque [champ] d'un <mark class="todo">.
@@ -45,7 +46,10 @@ function surlignerChamps(element) {
   for (const noeud of [...element.childNodes]) {
     if (noeud.nodeType === Node.ELEMENT_NODE) {
       surlignerChamps(noeud);
-    } else if (noeud.nodeType === Node.TEXT_NODE && CHAMP.test(noeud.textContent)) {
+    } else if (
+      noeud.nodeType === Node.TEXT_NODE &&
+      CHAMP.test(noeud.textContent)
+    ) {
       const fragment = document.createDocumentFragment();
 
       for (const morceau of noeud.textContent.split(DECOUPE)) {
@@ -83,7 +87,6 @@ if (aide && champs.length > 0) {
   });
 }
 
-
 /* 3. Répartition des tâches --------------------------------------------------- */
 
 const repartition = document.querySelector(".repartition__valeurs");
@@ -94,7 +97,9 @@ for (const lettre of ["a", "b", "c", "d"]) {
   const taches = document.querySelectorAll(`#taches .membre--${lettre}`);
   if (taches.length > 0) {
     const prenom = taches[0].textContent.trim();
-    comptes.push(`${prenom}, ${taches.length}\u00a0tâche${taches.length > 1 ? "s" : ""}`);
+    comptes.push(
+      `${prenom}, ${taches.length}\u00a0tâche${taches.length > 1 ? "s" : ""}`,
+    );
   }
 }
 

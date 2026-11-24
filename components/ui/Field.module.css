@@ -1,0 +1,40 @@
+.field {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+.input {
+  min-height: 44px;
+  padding: 0 12px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 150ms ease;
+}
+.input::placeholder {
+  color: var(--muted);
+}
+.input:hover:not(:disabled) {
+  border-color: var(--muted);
+}
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.input[aria-invalid="true"] {
+  border-color: var(--cherry);
+}
+
+.hint,
+.error {
+  font-size: 0.8125rem;
+}
+.hint {
+  color: var(--muted);
+}
+.error {
+  color: var(--cherry);
+}

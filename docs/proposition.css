@@ -8,7 +8,6 @@
    4. Couverture       8. Frise des jalons       12. Impression
    ========================================================================== */
 
-
 /* 1. Polices ---------------------------------------------------------------
    Hébergées dans le dépôt (dossier fonts/) : aucun appel à un service tiers,
    rendu identique sur tous les ordinateurs. Licence SIL Open Font License.
@@ -55,7 +54,6 @@
   font-display: block;
 }
 
-
 /* 2. Charte graphique --------------------------------------------------------
    Le style Noclone : fond nuit, Inter, mentions en Space Mono et une carte
    bancaire réaliste. Douze couleurs de carte (voir la section 6 du document) :
@@ -63,21 +61,21 @@
    Contrastes calculés sur le fond nuit (texte) et sur la surface (encadrés). */
 
 :root {
-  --nuit: #0f1014;          /* fond des pages */
-  --surface: #181a20;       /* encadrés, colonne des phases */
-  --trait: #2a2d35;         /* filets des tableaux */
-  --texte: #eef0f4;         /* texte courant (16,7:1) */
-  --gris: #a3a7b0;          /* texte secondaire (7,9:1) */
+  --nuit: #0f1014; /* fond des pages */
+  --surface: #181a20; /* encadrés, colonne des phases */
+  --trait: #2a2d35; /* filets des tableaux */
+  --texte: #eef0f4; /* texte courant (16,7:1) */
+  --gris: #a3a7b0; /* texte secondaire (7,9:1) */
 
   /* couleurs de texte, toutes au-dessus de 4,5:1 sur le fond nuit */
-  --cobalt: #8fb0ff;        /* 8,9:1 */
-  --orange: #ff9a5c;        /* 9,1:1 */
-  --emeraude: #5fe3ac;      /* 11,8:1 */
-  --lavande: #cbb8ff;       /* 10,7:1 */
-  --corail: #ff9a7e;        /* 9,2:1 */
-  --ambre: #ffc163;         /* 11,8:1 */
-  --cerise: #ff6d84;        /* 7,0:1 */
-  --lagon: #6fe0e6;         /* 12,0:1 */
+  --cobalt: #8fb0ff; /* 8,9:1 */
+  --orange: #ff9a5c; /* 9,1:1 */
+  --emeraude: #5fe3ac; /* 11,8:1 */
+  --lavande: #cbb8ff; /* 10,7:1 */
+  --corail: #ff9a7e; /* 9,2:1 */
+  --ambre: #ffc163; /* 11,8:1 */
+  --cerise: #ff6d84; /* 7,0:1 */
+  --lagon: #6fe0e6; /* 12,0:1 */
 
   /* les douze cartes (dégradés métallisés) */
   --carte-cobalt: linear-gradient(140deg, #3a63f0, #1630a8 55%, #2a4fd6);
@@ -92,7 +90,12 @@
   --carte-ambre: linear-gradient(140deg, #ffd27a, #d48a1c 55%, #f5b347);
   --carte-cerise: linear-gradient(140deg, #ff4d6d, #a3112f 55%, #e0294b);
   --carte-lagon: linear-gradient(140deg, #2fd3d9, #0b7c8f 55%, #22b3c0);
-  --carte-encadre: linear-gradient(140deg, #2a4fd6, #1630a8 60%, #1e3fb8); /* blanc dessus : 7,4:1 */
+  --carte-encadre: linear-gradient(
+    140deg,
+    #2a4fd6,
+    #1630a8 60%,
+    #1e3fb8
+  ); /* blanc dessus : 7,4:1 */
 
   /* teintes pleines, pour les petites pastilles (un dégradé par pastille alourdirait le PDF) */
   --plein-cobalt: #2a4fd6;
@@ -109,13 +112,12 @@
 
   --filet: 0.3mm solid var(--trait);
   --rayon: 1.2mm;
-  --mesure-texte: 74ch;     /* longueur de ligne confortable */
+  --mesure-texte: 74ch; /* longueur de ligne confortable */
   --marge-page: 20mm;
 
   /* chaque section prend la couleur d'une carte (voir 5.) */
   --accent: var(--cobalt);
 }
-
 
 /* 3. Base ------------------------------------------------------------------ */
 
@@ -166,7 +168,6 @@ strong {
   font-weight: 600;
 }
 
-
 /* 4. Couverture --------------------------------------------------------------
    Une photo pleine page : les cartes descendent en diagonale, du haut à gauche
    vers le bas à droite. Le texte occupe les deux zones vides : le cours en haut
@@ -175,7 +176,7 @@ strong {
 .couverture {
   display: flex;
   flex-direction: column;
-  height: 279mm;               /* hauteur d'une page Lettre (279,4 mm) */
+  height: 279mm; /* hauteur d'une page Lettre (279,4 mm) */
   padding: 16mm 18mm 15mm;
   overflow: hidden;
   position: relative;
@@ -192,7 +193,7 @@ strong {
 }
 
 .couverture > :not(.couverture__fond) {
-  position: relative;          /* le texte passe devant l'image */
+  position: relative; /* le texte passe devant l'image */
 }
 
 .couverture__cours {
@@ -218,7 +219,7 @@ strong {
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.055em;
-  text-transform: lowercase;   /* le logotype s'écrit en minuscules */
+  text-transform: lowercase; /* le logotype s'écrit en minuscules */
 }
 
 .couverture__slogan {
@@ -268,7 +269,6 @@ strong {
   grid-column: 1 / -1;
 }
 
-
 /* 5. Titres et texte ---------------------------------------------------------
    Numérotation automatique : sections (01, 02…), sous-sections (2.1…), tableaux.
    Chaque section prend la couleur d'une carte pour ses numéros. */
@@ -282,19 +282,43 @@ main > section {
   counter-reset: sous-section;
 }
 
-main > section:nth-of-type(1) { --accent: var(--cobalt); }
-main > section:nth-of-type(2) { --accent: var(--orange); }
-main > section:nth-of-type(3) { --accent: var(--emeraude); }
-main > section:nth-of-type(4) { --accent: var(--lavande); }
-main > section:nth-of-type(5) { --accent: var(--corail); }
-main > section:nth-of-type(6) { --accent: var(--lagon); }
+main > section:nth-of-type(1) {
+  --accent: var(--cobalt);
+}
+main > section:nth-of-type(2) {
+  --accent: var(--orange);
+}
+main > section:nth-of-type(3) {
+  --accent: var(--emeraude);
+}
+main > section:nth-of-type(4) {
+  --accent: var(--lavande);
+}
+main > section:nth-of-type(5) {
+  --accent: var(--corail);
+}
+main > section:nth-of-type(6) {
+  --accent: var(--lagon);
+}
 
-main > section:nth-of-type(1) { --carte-section: var(--plein-cobalt); }
-main > section:nth-of-type(2) { --carte-section: var(--plein-orange); }
-main > section:nth-of-type(3) { --carte-section: var(--plein-emeraude); }
-main > section:nth-of-type(4) { --carte-section: var(--plein-lavande); }
-main > section:nth-of-type(5) { --carte-section: var(--plein-corail); }
-main > section:nth-of-type(6) { --carte-section: var(--plein-lagon); }
+main > section:nth-of-type(1) {
+  --carte-section: var(--plein-cobalt);
+}
+main > section:nth-of-type(2) {
+  --carte-section: var(--plein-orange);
+}
+main > section:nth-of-type(3) {
+  --carte-section: var(--plein-emeraude);
+}
+main > section:nth-of-type(4) {
+  --carte-section: var(--plein-lavande);
+}
+main > section:nth-of-type(5) {
+  --carte-section: var(--plein-corail);
+}
+main > section:nth-of-type(6) {
+  --carte-section: var(--plein-lagon);
+}
 
 main > section + section {
   margin-top: 6mm;
@@ -311,7 +335,7 @@ h2,
 h3,
 h4 {
   line-height: 1.2;
-  break-after: avoid;          /* jamais de titre seul en bas de page */
+  break-after: avoid; /* jamais de titre seul en bas de page */
 }
 
 h2 {
@@ -394,7 +418,6 @@ li::marker {
   color: var(--gris);
 }
 
-
 /* 6. Tableaux ---------------------------------------------------------------- */
 
 .tableau {
@@ -450,7 +473,7 @@ li::marker {
 }
 
 .tableau tr {
-  break-inside: avoid;         /* une ligne n'est jamais coupée entre deux pages */
+  break-inside: avoid; /* une ligne n'est jamais coupée entre deux pages */
 }
 
 /* Colonne « Phase » fusionnée sur plusieurs lignes (rowspan) */
@@ -472,15 +495,33 @@ li::marker {
   table-layout: fixed;
 }
 
-.col-alternative { width: 42mm; }
-.col-phase       { width: 24mm; }
-.col-numero      { width: 11mm; }
-.col-responsable { width: 27mm; }
-.col-echeance    { width: 24mm; }
-.col-risque      { width: 58mm; }
-.col-probabilite { width: 20mm; }
-.col-impact      { width: 17mm; }
-.col-decision    { width: 18mm; }
+.col-alternative {
+  width: 42mm;
+}
+.col-phase {
+  width: 24mm;
+}
+.col-numero {
+  width: 11mm;
+}
+.col-responsable {
+  width: 27mm;
+}
+.col-echeance {
+  width: 24mm;
+}
+.col-risque {
+  width: 58mm;
+}
+.col-probabilite {
+  width: 20mm;
+}
+.col-impact {
+  width: 17mm;
+}
+.col-decision {
+  width: 18mm;
+}
 
 .tableau--risques td:nth-child(3),
 .tableau--risques td:nth-child(4) {
@@ -520,7 +561,6 @@ li::marker {
   color: var(--gris);
 }
 
-
 /* 7. Composants -------------------------------------------------------------- */
 
 /* Chaque membre a sa carte de couleur (la couleur seule ne porte jamais
@@ -533,17 +573,25 @@ li::marker {
   content: "";
   display: inline-block;
   width: 1.2em;
-  height: 0.76em;              /* une mini carte bancaire */
+  height: 0.76em; /* une mini carte bancaire */
   margin-right: 0.5em;
   border-radius: 0.14em;
   vertical-align: -0.06em;
   background: var(--couleur-membre, var(--gris));
 }
 
-.membre--a { --couleur-membre: var(--plein-cobalt); }
-.membre--b { --couleur-membre: var(--plein-emeraude); }
-.membre--c { --couleur-membre: var(--plein-orange); }
-.membre--d { --couleur-membre: var(--plein-lavande); }
+.membre--a {
+  --couleur-membre: var(--plein-cobalt);
+}
+.membre--b {
+  --couleur-membre: var(--plein-emeraude);
+}
+.membre--c {
+  --couleur-membre: var(--plein-orange);
+}
+.membre--d {
+  --couleur-membre: var(--plein-lavande);
+}
 
 /* Niveau de probabilité ou d'impact : texte + couleur */
 .niveau {
@@ -558,7 +606,7 @@ li::marker {
 
 .niveau--eleve {
   color: var(--nuit);
-  background: var(--cerise);   /* nuit sur cerise : 7,0:1 */
+  background: var(--cerise); /* nuit sur cerise : 7,0:1 */
   border-color: var(--cerise);
 }
 
@@ -591,7 +639,12 @@ li::marker {
   left: 0;
   width: 1.4mm;
   border-radius: var(--rayon) 0 0 var(--rayon);
-  background: linear-gradient(var(--cobalt), var(--orange), var(--emeraude), var(--lavande));
+  background: linear-gradient(
+    var(--cobalt),
+    var(--orange),
+    var(--emeraude),
+    var(--lavande)
+  );
 }
 
 .encadre p:last-child {
@@ -681,7 +734,6 @@ li::marker {
   margin: 0;
 }
 
-
 /* 8. Frise des jalons -----------------------------------------------------------
    Chaque <li> est une séance : numéro et date en haut, fil au milieu,
    libellé en bas. Le fil passe par les couleurs des cartes de la première à la dernière séance.
@@ -693,8 +745,8 @@ li::marker {
 }
 
 .frise ol {
-  --haut-entete: 8.5mm;                     /* zone séance + date */
-  --y-fil: calc(var(--haut-entete) + 3mm);  /* position du fil */
+  --haut-entete: 8.5mm; /* zone séance + date */
+  --y-fil: calc(var(--haut-entete) + 3mm); /* position du fil */
 
   display: grid;
   grid-template-columns: repeat(11, 1fr);
@@ -702,8 +754,14 @@ li::marker {
   margin: 0;
   padding: 0;
   list-style: none;
-  background:
-    linear-gradient(90deg, var(--cobalt), var(--orange), var(--emeraude), var(--lavande), var(--corail))
+  background: linear-gradient(
+      90deg,
+      var(--cobalt),
+      var(--orange),
+      var(--emeraude),
+      var(--lavande),
+      var(--corail)
+    )
     0 calc(var(--y-fil) - 0.4mm) / 100% 0.8mm no-repeat;
 }
 
@@ -735,7 +793,11 @@ li::marker {
   left: 0;
   right: 0;
   height: 4mm;
-  background: repeating-linear-gradient(-45deg, var(--gris) 0 0.3mm, transparent 0.3mm 1.1mm);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--gris) 0 0.3mm,
+    transparent 0.3mm 1.1mm
+  );
   opacity: 0.6;
 }
 
@@ -776,7 +838,8 @@ li::marker {
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.jalon--cle::before {                     /* la démonstration : jalon décisif */
+.jalon--cle::before {
+  /* la démonstration : jalon décisif */
   width: 3.8mm;
   height: 3.8mm;
   background: var(--orange);
@@ -793,7 +856,6 @@ li::marker {
   font-size: 8.5pt;
   color: var(--gris);
 }
-
 
 /* 8 bis. Direction artistique (section 6) ---------------------------------------- */
 
@@ -863,7 +925,6 @@ li::marker {
   color: var(--gris);
 }
 
-
 /* 9. Colophon ------------------------------------------------------------------ */
 
 .colophon {
@@ -888,7 +949,6 @@ li::marker {
 .colophon p {
   margin: 0;
 }
-
 
 /* 10. Aide à la rédaction (écran seulement) ---------------------------------------
    Les champs [entre crochets] sont surlignés par proposition.js. Le surlignage
@@ -944,7 +1004,6 @@ mark.todo {
   outline: 0.3mm dashed var(--nuit);
   outline-offset: -0.3mm;
 }
-
 
 /* 11. Écran ---------------------------------------------------------------------
    Aperçu fidèle au PDF : mêmes dimensions (format Lettre) et mêmes tailles de texte.
@@ -1043,7 +1102,6 @@ mark.todo {
   }
 }
 
-
 /* 12. Impression ------------------------------------------------------------------
    Format Lettre, en-têtes et pieds de page dans les marges, numéros de page,
    et les douze cartes au centre du pied de chaque page intérieure. */
@@ -1104,11 +1162,21 @@ mark.todo {
 @page :first {
   margin: 0;
 
-  @top-left      { content: none; }
-  @top-right     { content: none; }
-  @bottom-left   { content: none; }
-  @bottom-center { content: none; }
-  @bottom-right  { content: none; }
+  @top-left {
+    content: none;
+  }
+  @top-right {
+    content: none;
+  }
+  @bottom-left {
+    content: none;
+  }
+  @bottom-center {
+    content: none;
+  }
+  @bottom-right {
+    content: none;
+  }
 }
 
 @media print {
@@ -1120,16 +1188,28 @@ mark.todo {
   .aide {
     display: none !important;
   }
-
 }
 
 /* Page 2 (équipe et idée du projet) : espacements un peu resserrés
    pour que les fonctionnalités tiennent sur la même page. */
 #equipe h2,
-#idee h2 { margin-bottom: 2mm; }
+#idee h2 {
+  margin-bottom: 2mm;
+}
 #equipe .tableau td,
-#equipe .tableau tbody th { padding-block: 0.7mm; }
-#idee { margin-top: 4mm; }
-#idee h3 { margin-top: 2.8mm; }
-#idee p { margin-bottom: 1.5mm; }
-#idee .encadre { margin: 2mm 0; padding-block: 2.5mm; }
+#equipe .tableau tbody th {
+  padding-block: 0.7mm;
+}
+#idee {
+  margin-top: 4mm;
+}
+#idee h3 {
+  margin-top: 2.8mm;
+}
+#idee p {
+  margin-bottom: 1.5mm;
+}
+#idee .encadre {
+  margin: 2mm 0;
+  padding-block: 2.5mm;
+}
